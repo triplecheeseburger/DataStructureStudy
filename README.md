@@ -6,7 +6,7 @@
 구현 목록:
 <li>ArrayList</li>
 <li>LinkedList</li>
-<li>DoubleLinkedCircularList</li>
+<li>DoublyLinkedCircularList</li>
 </ul>
 <ul>
 응용:
