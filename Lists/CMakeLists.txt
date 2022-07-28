@@ -17,10 +17,10 @@ add_executable(linked
         linked/main.c
         )
 
-add_executable(doubleLinkedCircular
-        doubleLinkedCircular/doublylist.c
-        doubleLinkedCircular/doublylist.h
-        doubleLinkedCircular/main.c)
+add_executable(doublyLinkedCircular
+        doublyLinkedCircular/doublylist.c
+        doublyLinkedCircular/doublylist.h
+        doublyLinkedCircular/main.c)
 
 add_executable(poly
         polynomial/polylinkedlist.c

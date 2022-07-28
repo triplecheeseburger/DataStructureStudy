@@ -36,5 +36,5 @@ int main()
 	deleteDoublyList(doublyList);
 	doublyList = NULL;
 	displayDoublyList(doublyList);
-    system("leaks doubleLinkedCircular");
+    system("leaks doublyLinkedCircular");
 }
