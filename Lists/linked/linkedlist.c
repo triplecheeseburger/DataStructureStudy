@@ -16,23 +16,12 @@ int addLLElement(LinkedList* pList, int position, ListNode element)
 
 	tmp_element->data = element.data;
 	tmp_element->pLink = NULL;
-
-	if (position == 0 || pList->currentElementCount == 0)
-	{
-		tmp = pList->headerNode.pLink;
-		pList->headerNode.pLink = tmp_element;
-		tmp_element->pLink = tmp;
-	}
-	else
-	{
-		if (position > pList->currentElementCount)
-			position = pList->currentElementCount;
-		ListNode* cur = getLLElement(pList, position - 1);
-		tmp = cur->pLink;
-		cur->pLink = tmp_element;
-		tmp_element->pLink = tmp;
-
-	}
+	if (position > pList->currentElementCount)
+		position = pList->currentElementCount;
+	ListNode* cur = getLLElement(pList, position - 1);
+	tmp = cur->pLink;
+	cur->pLink = tmp_element;
+	tmp_element->pLink = tmp;
 	pList->currentElementCount++;
 	return (TRUE);
 }
@@ -43,18 +32,10 @@ int removeLLElement(LinkedList* pList, int position)
 		return (FALSE);
 	if (pList->currentElementCount == 0 || pList->currentElementCount <= position)
 		return (FALSE);
-	//position == 0
 	ListNode *tmp;
-	if (position == 0) {
-		tmp = pList->headerNode.pLink;
-		pList->headerNode.pLink = pList->headerNode.pLink->pLink;
-	}
-	else
-	{
-		ListNode* cur = getLLElement(pList, position - 1);
-		tmp = cur->pLink;
-		cur->pLink = cur->pLink->pLink;
-	}
+	ListNode* cur = getLLElement(pList, position - 1);
+	tmp = cur->pLink;
+	cur->pLink = cur->pLink->pLink;
 	free(tmp);
 	tmp = NULL;
 	pList->currentElementCount--;
@@ -71,8 +52,8 @@ ListNode* getLLElement(LinkedList* pList, int position)
 	ListNode* cur;
 	int index;
 
-	cur = pList->headerNode.pLink;
-	index = 0;
+	cur = &pList->headerNode;
+	index = -1;
 	while (index++ < position)
 		cur = cur->pLink;
 	return (cur);

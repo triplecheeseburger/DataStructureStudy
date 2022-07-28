@@ -25,24 +25,22 @@ int addDLElement(DoublyList* pList, int position, DoublyListNode element)
 	DoublyListNode* new_node;
     DoublyListNode* nextNode;
     DoublyListNode* prevNode;
-    // if pList or position is wrong 
+
     if (pList == NULL || position < 0)
         return (FALSE);
-    // if position is wrong
     if (position > pList->currentElementCount)
         return (FALSE);
+
     new_node = (DoublyListNode*) malloc(sizeof(DoublyListNode));
     *new_node = element;
-    if (pList->currentElementCount == 0 || position == 0) // list is empty
-        nextNode = pList->headerNode.pRLink;
-    else // not empty
-        nextNode = getDLElement(pList, position - 1)->pRLink;
+	nextNode = getDLElement(pList, position - 1)->pRLink;
 	prevNode = nextNode->pLLink;
     new_node->pLLink = prevNode;
     new_node->pRLink = nextNode;
     prevNode->pRLink = new_node;
     nextNode->pLLink = new_node;
 	pList->currentElementCount++;
+
     return (TRUE);
 }
 
@@ -65,7 +63,9 @@ int removeDLElement(DoublyList* pList, int position)
     free(posNode);
     posNode = NULL;
 	pList->currentElementCount--;
+	return (TRUE);
 }
+
 void clearDoublyList(DoublyList* pList)
 {
     if (pList == NULL)
@@ -85,8 +85,10 @@ DoublyListNode* getDLElement(DoublyList* pList, int position)
 {
 	int idx = 0;
 	DoublyListNode* curr;
-	if (pList == NULL || position < 0)
+	if (pList == NULL || position < -1)
 		return (NULL);
+	if (position == -1)
+		return (&pList->headerNode);
     if (position >= pList->currentElementCount)
         return (NULL);
 	if (position < (pList->currentElementCount / 2))
@@ -95,7 +97,7 @@ DoublyListNode* getDLElement(DoublyList* pList, int position)
 		while (idx++ < position)
 			curr = curr->pRLink;
     }
-    else
+	else
     {
         curr = pList->headerNode.pLLink;
         while (idx++ < pList->currentElementCount - 1 - position)
