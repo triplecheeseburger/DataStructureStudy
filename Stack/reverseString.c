@@ -5,17 +5,17 @@ char *reverseString(char *str) {
 	LinkedStack* pStack = createLinkedStack();
 	StackNode* node;
 
-	char* p = str;
-	while (*p != '\0') {
-		pushLS(pStack, (StackNode){*p, NULL});
-		p++;
+	int i = 0;
+	while (str[i] != '\0') {
+		pushLS(pStack, (StackNode){str[i], NULL});
+		++i;
 	}
-	p = str;
+	i = 0;
 	while (!isLinkedStackEmpty(pStack)) {
 		node = popLS(pStack);
-		*p = node->data;
+		str[i] = node->data;
 		free(node);
-		p++;
+		++i;
 	}
 	deleteLinkedStack(pStack);
 	return (str);
