@@ -1,4 +1,4 @@
-#include "linkedstack.h"
+#include "ListStack/linkedstack.h"
 #include <stdlib.h>
 
 char *reverseString(char *str) {
