@@ -1,17 +1,17 @@
 #include "arrayqueue.h"
 #include <stdlib.h>
 
-ArrayQueue* createArrayQueue(int maxElementCount) {
-	ArrayQueue* queue = (ArrayQueue*)malloc(sizeof(ArrayQueue));
+ArrayQueue *createArrayQueue(int maxElementCount) {
+	ArrayQueue *queue = malloc(sizeof(ArrayQueue));
 	queue->maxElementCount = maxElementCount;
 	queue->currentElementCount = 0;
 	queue->front = 0;
 	queue->rear = 0;
-	queue->pElement = (ArrayQueueNode*)malloc(sizeof(ArrayQueueNode) * maxElementCount);
+	queue->pElement = malloc(sizeof(ArrayQueueNode) * maxElementCount);
 	return queue;
 }
 
-int enqueueAQ(ArrayQueue* pQueue, ArrayQueueNode element) {
+int enqueueAQ(ArrayQueue *pQueue, ArrayQueueNode element) {
 	if (isArrayQueueFull(pQueue)) {
 		return FALSE;
 	}
@@ -21,7 +21,7 @@ int enqueueAQ(ArrayQueue* pQueue, ArrayQueueNode element) {
 	return TRUE;
 }
 
-ArrayQueueNode *dequeueAQ(ArrayQueue* pQueue) { // returned node has to be freed by caller
+ArrayQueueNode *dequeueAQ(ArrayQueue *pQueue) { // returned node has to be freed by caller
 	if (isArrayQueueEmpty(pQueue)) {
 		return NULL;
 	}
