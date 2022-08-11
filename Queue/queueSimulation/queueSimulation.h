@@ -13,7 +13,7 @@ typedef struct SimCustomerType
 	int endTime;
 } SimCustomer;
 
-void insertCutomer(int arrivalTime, int processTime, LinkedDeque *pQueue);
+void insertCustomer(int arrivalTime, int processTime, LinkedDeque *pQueue);
 void processArrival(int currentTime, LinkedDeque *pArrivalQueue, LinkedDeque *pWaitQueue);
 DequeNode* processServiceNodeStart(int currentTime, LinkedDeque *pWaitQueue);
 DequeNode* processServiceNodeEnd(int currentTime, DequeNode *pServiceNode, int *pServiceUserCount, int *pTotalWaitTime);

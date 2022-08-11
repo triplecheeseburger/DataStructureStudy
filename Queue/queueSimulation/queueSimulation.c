@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 
-void insertCutomer(int arrivalTime, int processTime, LinkedDeque *pQueue)
+void insertCustomer(int arrivalTime, int processTime, LinkedDeque *pQueue)
 {
 	DequeNode element;
 
@@ -20,8 +20,8 @@ void processArrival(int currentTime, LinkedDeque *pArrivalQueue, LinkedDeque *pW
 {
 	if (!isLinkedDequeEmpty(pArrivalQueue) && peekFrontLD(pArrivalQueue)->data.arrivalTime <= currentTime)
 	{
-		insertCutomer(peekFrontLD(pArrivalQueue)->data.arrivalTime, peekFrontLD(pArrivalQueue)->data.serviceTime,
-					  pWaitQueue);
+		insertCustomer(peekFrontLD(pArrivalQueue)->data.arrivalTime, peekFrontLD(pArrivalQueue)->data.serviceTime,
+					   pWaitQueue);
 		deleteFrontLD(pArrivalQueue);
 	}
 }
@@ -105,16 +105,16 @@ int simulation(void)
 	LinkedDeque *pWaitQueue = createLinkedDeque();
 	DequeNode *pServiceNode = NULL;
 
-	insertCutomer(0, 1, pArrivalQueue);
-	insertCutomer(1, 2, pArrivalQueue);
-	insertCutomer(2, 3, pArrivalQueue);
-	insertCutomer(3, 4, pArrivalQueue);
-	insertCutomer(4, 5, pArrivalQueue);
-	insertCutomer(5, 6, pArrivalQueue);
-	insertCutomer(6, 1, pArrivalQueue);
-	insertCutomer(7, 2, pArrivalQueue);
-	insertCutomer(8, 3, pArrivalQueue);
-	insertCutomer(9, 4, pArrivalQueue);
+	insertCustomer(0, 1, pArrivalQueue);
+	insertCustomer(1, 2, pArrivalQueue);
+	insertCustomer(2, 3, pArrivalQueue);
+	insertCustomer(3, 4, pArrivalQueue);
+	insertCustomer(4, 5, pArrivalQueue);
+	insertCustomer(5, 6, pArrivalQueue);
+	insertCustomer(6, 1, pArrivalQueue);
+	insertCustomer(7, 2, pArrivalQueue);
+	insertCustomer(8, 3, pArrivalQueue);
+	insertCustomer(9, 4, pArrivalQueue);
 
 	while (!isLinkedDequeEmpty(pArrivalQueue) || !isLinkedDequeEmpty(pWaitQueue) || pServiceNode != NULL)
 	{
