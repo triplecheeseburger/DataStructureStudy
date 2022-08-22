@@ -113,6 +113,7 @@ BinTree *AtoMTree(void) {
 	insertRightChildNodeBT(getLeftChildNodeBT(getRightChildNodeBT(getRootNodeBT(bintree))), (BinTreeNode){'K', FALSE, NULL, NULL});
 	insertLeftChildNodeBT(getRightChildNodeBT(getRightChildNodeBT(getRootNodeBT(bintree))), (BinTreeNode){'L', FALSE, NULL, NULL});
 	insertRightChildNodeBT(getRightChildNodeBT(getRightChildNodeBT(getRootNodeBT(bintree))), (BinTreeNode){'M', FALSE, NULL, NULL});
+	insertRightChildNodeBT(getRightChildNodeBT(getRightChildNodeBT(getRightChildNodeBT(getRootNodeBT(bintree)))), (BinTreeNode){'N', FALSE, NULL, NULL});
 
 	return bintree;
 }
